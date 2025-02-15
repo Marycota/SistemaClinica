@@ -1,6 +1,6 @@
 package entidades;
 
-import SistemaClinicaMedica.excecoes.PagamentoPendenteException;
+import excecoes.PagamentoPendente;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +15,9 @@ public class Paciente {
         this.historicoConsultas = new ArrayList<>();
     }
 
-    public void agendarConsulta(consulta consulta) throws PagamentoPendenteException {
-        for (consulta c : historicoConsultas) {
+    public void agendarConsulta(consulta consulta) throws PagamentoPendente{
             if (!c.getPagamento().isPago()) {
-                throw new pagamentoPendenteException("Paciente possui pendências financeiras!");
+                throw new PagamentoPendente("Paciente possui pendências financeiras!");
             }
         }
         historicoConsultas.add(consulta);

@@ -8,6 +8,7 @@ public class Exame {
     private LocalDate dataRealizacao;
     private String resultado;
     private pagamento pagamento;
+   
 
     public Exame(String tipo, LocalDate dataPrescricao, double custo) {
         this.tipo = tipo;

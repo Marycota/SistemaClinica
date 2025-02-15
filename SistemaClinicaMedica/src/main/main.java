@@ -8,12 +8,12 @@ import java.time.LocalDateTime;
 public class main {
     public static void main(String[] args) {
         medico medico = new medico("Dr. João", "123.456.789-00", LocalDate.of(1980, 10, 15), "CRM12345", "Cardiologia");
-        paciente paciente = new paciente("Ana Souza", "987.654.321-00", LocalDate.of(1995, 3, 20));
+        Paciente paciente = new Paciente("Ana Souza", "987.654.321-00", LocalDate.of(1995, 3, 20));
 
         consulta consulta = new consulta(LocalDateTime.of(2025, 2, 15, 14, 30), paciente, medico, 150.0);
 
         
-        exame exame = new exame("Raio-X", LocalDate.now(), 80.0);
+        Exame exame = new Exame("Raio-X", LocalDate.now(), 80.0);
         consulta.prescreverExame(exame);
         consulta.prescreverMedicamento("Paracetamol");
 

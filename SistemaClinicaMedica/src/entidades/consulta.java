@@ -11,12 +11,17 @@ public class consulta {
     private int duracaoMinutos;
     private String status; 
     private Paciente paciente;
-    private Medico medico;
+    private medico medico;
     private List<Exame> examesPrescritos;
     private List<String> medicamentosPrescritos;
     private pagamento pagamento;
 
-    public consulta(LocalDate data, LocalTime horario, Paciente paciente, Medico medico, double valor) {
+    public consulta(LocalDate data, LocalTime horario, Paciente paciente, medico medico, double valor) {
+    if (!paciente.isPagamentoEmDia()) {
+        throw new PagamentoPendente("Paciente possui pagamentos pendentes e não pode agendar nova consulta.");
+   {
+   }
+   }
         this.data = data;
         this.horario = horario;
         this.duracaoMinutos = 30; 
@@ -26,6 +31,9 @@ public class consulta {
         this.examesPrescritos = new ArrayList<>();
         this.medicamentosPrescritos = new ArrayList<>();
         this.pagamento = new pagamento(valor);
+    }
+    public void realizarPagamento() {
+        pagamento.realizarPagamento();
     }
 
     public void adicionarExame(Exame exame) {
