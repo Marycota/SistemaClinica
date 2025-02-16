@@ -1,25 +1,37 @@
 package entidades;
 
-import excecoes.PagamentoPendente;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Paciente {
     private String nome;
     private String cpf;
-    private List<consulta> historicoConsultas;
+    private LocalDate dataNascimento;
+    private List<consulta> historicoMedico = new ArrayList<>();
+    private boolean pagamentoPendente;
 
-    public Paciente(String nome, String cpf) {
+    public Paciente(String nome, String cpf, LocalDate dataNascimento) {
         this.nome = nome;
         this.cpf = cpf;
-        this.historicoConsultas = new ArrayList<>();
+        this.dataNascimento = dataNascimento;
+        this.pagamentoPendente = false;
     }
 
-    public void agendarConsulta(consulta consulta) throws PagamentoPendente{
-            if (!c.getPagamento().isPago()) {
-                throw new PagamentoPendente("Paciente possui pendências financeiras!");
-            }
-        }
-        historicoConsultas.add(consulta);
+    public void adicionarConsulta(consulta consulta) {
+        historicoMedico.add(consulta);
     }
+
+    public boolean isPagamentoPendente() {
+        return pagamentoPendente;
+    }
+
+    public void setPagamentoPendente(boolean pagamentoPendente) {
+        this.pagamentoPendente = pagamentoPendente;
+    }
+
+    public String getnome() { return nome; }
+    public String getcpf() { return cpf; }
+    public String getPaciente() {return Paciente ;}
 }
+

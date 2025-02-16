@@ -10,7 +10,7 @@ public class medico {
     private LocalDate dataNascimento;
     private String crm;
     private String especialidade;
-    private List<consulta> historicoMedico; // Lista de consultas
+    private List<consulta> historicoConsultas = new ArrayList<>();
 
     public medico(String nome, String cpf, LocalDate dataNascimento, String crm, String especialidade) {
         this.nome = nome;
@@ -18,36 +18,12 @@ public class medico {
         this.dataNascimento = dataNascimento;
         this.crm = crm;
         this.especialidade = especialidade;
-        this.historicoMedico = new ArrayList<>(); // Inicializando a lista
-    }
-
-   
-    public String getNome() {
-        return nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public String getCrm() {
-        return crm;
-    }
-
-    public String getEspecialidade() {
-        return especialidade;
-    }
-
-    public List<consulta> getHistoricoMedico() {
-        return historicoMedico;
     }
 
     public void adicionarConsulta(consulta consulta) {
-        this.historicoMedico.add(consulta);
+        historicoConsultas.add(consulta);
     }
-}
 
+    public String getEspecialidade() { return especialidade; }
+    public String getNome() { return nome; }
+}

@@ -1,38 +1,20 @@
 package entidades;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class pagamento {
+    private Paciente paciente;
     private double valor;
     private boolean pago;
-    private List<Exame> exames;
 
-    public pagamento(double valor) {
+    public pagamento(Paciente paciente, double valor) {
+        this.paciente = paciente;
         this.valor = valor;
-        this.pago = false; 
-        this.exames = new ArrayList<>();
-    }
-
-    public void adicionarExame(Exame exame) {
-        exames.add(exame);
-        this.valor += exame.getCusto(); 
-    }
-
-    public boolean isPago() {
-        return pago;
+        this.pago = false;
     }
 
     public void realizarPagamento() {
         this.pago = true;
-        System.out.println("Pagamento realizado com sucesso!");
+        paciente.setPagamentoPendente(false);
     }
 
-    public double getValor() {
-        return valor;
-    }
-
-    public List<Exame> getExames() {
-        return exames;
-    }
+    public boolean isPago() { return pago; }
 }
